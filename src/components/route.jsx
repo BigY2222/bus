@@ -19,7 +19,7 @@ export const Route = (props) => {
   }, [startPlace, endPlace, busStops, busLines])
 
   return <div className="p-4 max-h-96 rounded-2xl bg-white border border-white-10 overflow-y-auto">
-    <Timeline items={routes.map(({ address, isBus, distance, duration, lines, tip }) => {
+    <Timeline items={routes.length === 0 ? [{ children: 'Start point and End point same place' }] : routes.map(({ address, isBus, distance, duration, lines, tip }) => {
       if (isBus) {
         return {
           children: lines.length > 0 ? <div><span className="font-bold">{address}</span> Take <span className="font-bold">{lines.join('/')}</span></div> : <div>Arrive at <span className="font-bold">{address}</span></div>

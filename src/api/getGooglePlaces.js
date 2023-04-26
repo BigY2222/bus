@@ -1,10 +1,6 @@
 export const getGooglePlaces = (place) => {
-  // const request = {
-  //   query: place,
-  //   fields: ["name", "geometry"],
-  // }
   return new Promise((resolve) => {
-    google.autocompleteService.getQueryPredictions({ input: place }, (predictions, status) => {
+    google.autocompleteService.getPlacePredictions({ input: place, componentRestrictions: { country: "sg" } }, (predictions, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
         const places = predictions.map(({ description, place_id }) => {
           return {

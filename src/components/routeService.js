@@ -103,6 +103,7 @@ export class RouteService {
   }
 
   async planRoutes() {
+    if (this.startPlace.address === this.endPlace.address) return []
     const isStartInSchool = this.isSchooldStation(this.startPlace) 
     const isEndInSchool = this.isSchooldStation(this.endPlace)
     if (isStartInSchool && isEndInSchool) {
